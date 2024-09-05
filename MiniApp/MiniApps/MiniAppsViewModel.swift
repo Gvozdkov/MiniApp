@@ -18,13 +18,28 @@ final class MiniAppsViewModel {
     }
 
     private func fetchMiniApps() {
-        miniApps = [
-            MiniAppsModel(image: "smoke.circle.fill", name: "Погода", description: "Следите за погодой в реальном времени."),
-            MiniAppsModel(image: "mappin.and.ellipse", name: "Местоположение", description: "Определите своё местоположение."),
-            MiniAppsModel(image: "cart.fill", name: "Магазин", description: "Список покупок всегда под рукой."),
-            MiniAppsModel(image: "gamecontroller", name: "Игры", description: "Время для игр.")
-        ]
-        reloadData?()
+        guard let url = NetworkURL.mocMiniApps.url else {
+            print("Invalid URL")
+            return
+        }
+        
+        NetworkManager.shared.fatchData(from: url) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    let response = try decoder.decode([String: [MiniAppsModel]].self, from: data)
+                    if let miniApp = response["miniApps"] {
+                        self.miniApps = miniApp
+                        self.reloadData?()
+                    }
+                } catch {
+                    print("Error decoding data: \(error)")
+                }
+            case .failure(let error):
+                print("Error network airRecommendationFeed \(error)")
+            }
+        }
     }
     
     func getMiniApp(at index: Int) -> MiniAppsModel {
@@ -34,6 +49,5 @@ final class MiniAppsViewModel {
     func numberOfMiniApps() -> Int {
         return miniApps.count
     }
-    
-
 }
+
