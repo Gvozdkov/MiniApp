@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MiniAppsModel {
+struct MiniAppsModel: Decodable {
     let image: String
     let name: String
     let description: String
