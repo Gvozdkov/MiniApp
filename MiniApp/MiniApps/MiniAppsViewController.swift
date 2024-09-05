@@ -60,6 +60,17 @@ final class MiniAppsViewController: UIViewController {
     }
 }
 
+extension MiniAppsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screenWidth = view.bounds.width
+        let screenHeight = view.bounds.height
+        let itemHeight = screenHeight / 8
+        let itemWidth = screenWidth
+        
+        return CGSize(width: itemWidth, height: itemHeight)
+    }
+}
+
 extension MiniAppsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfMiniApps()
@@ -76,13 +87,19 @@ extension MiniAppsViewController: UICollectionViewDataSource {
     }
 }
 
-extension MiniAppsViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let screenWidth = view.bounds.width
-        let screenHeight = view.bounds.height
-        let itemHeight = screenHeight / 8
-        let itemWidth = screenWidth
-        
-        return CGSize(width: itemWidth, height: itemHeight)
+extension MiniAppsViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            coordinator?.showWeatherViewController()
+        case 1:
+            coordinator?.showMapViewController()        
+        case 2:
+            coordinator?.showShopViewController()      
+        case 3:
+            coordinator?.showGameViewController()
+        default:
+            break
+        }
     }
 }

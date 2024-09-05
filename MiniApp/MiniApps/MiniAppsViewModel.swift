@@ -34,4 +34,6 @@ final class MiniAppsViewModel {
     func numberOfMiniApps() -> Int {
         return miniApps.count
     }
+    
+
 }
