@@ -13,6 +13,10 @@
 		E746504E2C88CFF7008354FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E746504D2C88CFF7008354FF /* Assets.xcassets */; };
 		E74650512C88CFF7008354FF /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E74650502C88CFF7008354FF /* Base */; };
 		E74650592C88D2C9008354FF /* CoordinatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74650582C88D2C9008354FF /* CoordinatorVC.swift */; };
+		E746505B2C88F84A008354FF /* MiniAppsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E746505A2C88F84A008354FF /* MiniAppsCell.swift */; };
+		E7928A812C890F5E0034C71D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7928A802C890F5E0034C71D /* Colors.swift */; };
+		E7928A832C895B390034C71D /* MiniAppsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7928A822C895B390034C71D /* MiniAppsModel.swift */; };
+		E7928A852C895BCF0034C71D /* MiniAppsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7928A842C895BCF0034C71D /* MiniAppsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		E74650502C88CFF7008354FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E74650522C88CFF7008354FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E74650582C88D2C9008354FF /* CoordinatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorVC.swift; sourceTree = "<group>"; };
+		E746505A2C88F84A008354FF /* MiniAppsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppsCell.swift; sourceTree = "<group>"; };
+		E7928A802C890F5E0034C71D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		E7928A822C895B390034C71D /* MiniAppsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppsModel.swift; sourceTree = "<group>"; };
+		E7928A842C895BCF0034C71D /* MiniAppsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +67,24 @@
 				E74650442C88CFF5008354FF /* AppDelegate.swift */,
 				E74650462C88CFF5008354FF /* SceneDelegate.swift */,
 				E74650482C88CFF5008354FF /* MiniAppsViewController.swift */,
+				E7928A842C895BCF0034C71D /* MiniAppsViewModel.swift */,
+				E7928A822C895B390034C71D /* MiniAppsModel.swift */,
+				E746505A2C88F84A008354FF /* MiniAppsCell.swift */,
+				E7928A7F2C890F480034C71D /* Helper */,
 				E74650582C88D2C9008354FF /* CoordinatorVC.swift */,
 				E746504D2C88CFF7008354FF /* Assets.xcassets */,
 				E746504F2C88CFF7008354FF /* LaunchScreen.storyboard */,
 				E74650522C88CFF7008354FF /* Info.plist */,
 			);
 			path = MiniApp;
+			sourceTree = "<group>";
+		};
+		E7928A7F2C890F480034C71D /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				E7928A802C890F5E0034C71D /* Colors.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +158,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E74650492C88CFF5008354FF /* MiniAppsViewController.swift in Sources */,
+				E7928A832C895B390034C71D /* MiniAppsModel.swift in Sources */,
 				E74650452C88CFF5008354FF /* AppDelegate.swift in Sources */,
 				E74650472C88CFF5008354FF /* SceneDelegate.swift in Sources */,
+				E7928A812C890F5E0034C71D /* Colors.swift in Sources */,
 				E74650592C88D2C9008354FF /* CoordinatorVC.swift in Sources */,
+				E746505B2C88F84A008354FF /* MiniAppsCell.swift in Sources */,
+				E7928A852C895BCF0034C71D /* MiniAppsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
