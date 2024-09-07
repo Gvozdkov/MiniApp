@@ -6,21 +6,47 @@
 //
 
 import Foundation
+import CoreLocation
 
-final class WeatherViewModel {
+final class WeatherViewModel: NSObject {
     var onWeatherDataReceived: (() -> Void)?
-    private(set) var city = "Moscow" {
+    private(set) var city: String = "Moscow" {
         didSet {
-            fetchWeatherOneDay(city: city)
+                fetchWeatherOneDay(city: city)
         }
     }
     
     private(set) var weather: WeatherOneDayModel?
     
-       init() {
-           fetchWeatherOneDay(city: city)
+    public var locationManager = CLLocationManager()
+
+    override init() {
+        super.init()
+        locationManager.delegate = self
     }
     
+    private func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+    }
+    
+    private func fetchCityFromLocation(_ location: CLLocation) {
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
+            if let error = error {
+                print("Geocode error: \(error)")
+                self?.city = "Moscow"
+                return
+            }
+            
+            if let placemark = placemarks?.first, let city = placemark.locality {
+                self?.city = city
+            } else {
+                self?.city = "Moscow"
+            }
+        }
+    }
+
     func fetchWeatherOneDay(city: String) {
         guard let url = NetworkURL.weather(city: city).url else {
             print("Invalid URL")
@@ -41,6 +67,36 @@ final class WeatherViewModel {
             case .failure(let error):
                 print("Error network weather \(error)")
             }
+        }
+    }
+    
+    func requestLocationAuthorization() {
+        locationManager.requestWhenInUseAuthorization()
+    }
+    
+    func fetchCurrentLocation() {
+        locationManager.startUpdatingLocation()
+    }
+}
+
+extension WeatherViewModel: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        fetchCityFromLocation(location)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Location error: \(error)")
+    }
+
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse, .authorizedAlways:
+            locationManager.startUpdatingLocation()
+        case .denied, .restricted, .notDetermined:
+            print("Доступ к местоположению не разрешен или не определен")
+        @unknown default:
+            break
         }
     }
 }
