@@ -17,6 +17,8 @@
 		E76D176B2C8A696300CF3096 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D176A2C8A696300CF3096 /* NetworkManager.swift */; };
 		E76D176E2C8A699100CF3096 /* NetworkURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D176D2C8A699100CF3096 /* NetworkURL.swift */; };
 		E76D17712C8A69C500CF3096 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E76D17702C8A69C500CF3096 /* Alamofire */; };
+		E76D17732C8B535000CF3096 /* WeatherOneDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D17722C8B535000CF3096 /* WeatherOneDayModel.swift */; };
+		E76D17752C8B53F600CF3096 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D17742C8B53F600CF3096 /* WeatherViewModel.swift */; };
 		E7928A832C895B390034C71D /* MiniAppsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7928A822C895B390034C71D /* MiniAppsModel.swift */; };
 		E7928A852C895BCF0034C71D /* MiniAppsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7928A842C895BCF0034C71D /* MiniAppsViewModel.swift */; };
 		E7928A8B2C89CA0F0034C71D /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7928A8A2C89CA0F0034C71D /* WeatherViewController.swift */; };
@@ -37,6 +39,8 @@
 		E746505A2C88F84A008354FF /* MiniAppsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppsCell.swift; sourceTree = "<group>"; };
 		E76D176A2C8A696300CF3096 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E76D176D2C8A699100CF3096 /* NetworkURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkURL.swift; sourceTree = "<group>"; };
+		E76D17722C8B535000CF3096 /* WeatherOneDayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherOneDayModel.swift; sourceTree = "<group>"; };
+		E76D17742C8B53F600CF3096 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		E7928A822C895B390034C71D /* MiniAppsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppsModel.swift; sourceTree = "<group>"; };
 		E7928A842C895BCF0034C71D /* MiniAppsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppsViewModel.swift; sourceTree = "<group>"; };
 		E7928A8A2C89CA0F0034C71D /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				E7928A822C895B390034C71D /* MiniAppsModel.swift */,
+				E76D17722C8B535000CF3096 /* WeatherOneDayModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -132,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				E7928A8A2C89CA0F0034C71D /* WeatherViewController.swift */,
+				E76D17742C8B53F600CF3096 /* WeatherViewModel.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -256,6 +262,8 @@
 				E74650452C88CFF5008354FF /* AppDelegate.swift in Sources */,
 				E74650472C88CFF5008354FF /* SceneDelegate.swift in Sources */,
 				E76D176E2C8A699100CF3096 /* NetworkURL.swift in Sources */,
+				E76D17752C8B53F600CF3096 /* WeatherViewModel.swift in Sources */,
+				E76D17732C8B535000CF3096 /* WeatherOneDayModel.swift in Sources */,
 				E74650592C88D2C9008354FF /* CoordinatorVC.swift in Sources */,
 				E746505B2C88F84A008354FF /* MiniAppsCell.swift in Sources */,
 				E7928A852C895BCF0034C71D /* MiniAppsViewModel.swift in Sources */,

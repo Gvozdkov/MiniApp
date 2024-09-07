@@ -13,7 +13,7 @@ final class NetworkManager {
     
     private init() { }
     
-    func fatchData(from url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
+    func fetchData(from url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
         AF.request(url).responseData { response in
             switch response.result {
             case .success(let data):

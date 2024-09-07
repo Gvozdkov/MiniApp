@@ -18,12 +18,12 @@ final class MiniAppsViewModel {
     }
 
     private func fetchMiniApps() {
-        guard let url = NetworkURL.mocMiniApps.url else {
+        guard let url = NetworkURL.miniApps.url else {
             print("Invalid URL")
             return
         }
         
-        NetworkManager.shared.fatchData(from: url) { result in
+        NetworkManager.shared.fetchData(from: url) { result in
             switch result {
             case .success(let data):
                 do {
@@ -37,7 +37,7 @@ final class MiniAppsViewModel {
                     print("Error decoding data: \(error)")
                 }
             case .failure(let error):
-                print("Error network airRecommendationFeed \(error)")
+                print("Error network miniApps \(error)")
             }
         }
     }
