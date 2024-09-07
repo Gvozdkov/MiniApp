@@ -147,7 +147,7 @@ final class WeatherViewController: UIViewController {
         view.backgroundColor = .white
         settingsViewController()
         setupTapGestureToHideKeyboard()
-        viewModel.requestLocationAuthorization()
+        viewModel.fetchCurrentLocation()
         setupWeatherDataBinding()
         viewModel.fetchWeatherOneDay(city: viewModel.city)
     }
@@ -272,12 +272,13 @@ final class WeatherViewController: UIViewController {
     @objc private func currentLocationButtonAction() {
         searchBar.text = nil
         hideKeyboard()
-        viewModel.isSearchByCity = false
+        viewModel.isSearchByCity = true
         viewModel.fetchWeatherOneDay(city: viewModel.city)
         print("currentLocationButtonAction")
     }
     
     @objc private func hideKeyboard() {
+        viewModel.isSearchByCity = true
         view.endEditing(true)
     }
 }
@@ -289,6 +290,7 @@ extension WeatherViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.isSearchByCity = true
         searchBar.resignFirstResponder()
     }
 }
