@@ -137,7 +137,7 @@ final class WeatherViewController: UIViewController {
         setupTapGestureToHideKeyboard()
         viewModel.requestLocationAuthorization()
         setupWeatherDataBinding()
-        viewModel.fetchWeatherOneDay(city: viewModel.city ?? "")
+        viewModel.fetchWeatherOneDay(city: viewModel.city)
     }
     
     private func settingsViewController() {
@@ -155,42 +155,35 @@ final class WeatherViewController: UIViewController {
           containerView.addSubview(infoStack)
        
         NSLayoutConstraint.activate([
-               // Ограничения для scrollView
                scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
                scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
                
-               // Ограничения для contentView внутри scrollView
                contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
                contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
                contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
                contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
                contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
                
-               // Ограничения для containerSearchBar
                containerSearchBar.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
                containerSearchBar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
                containerSearchBar.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
                containerSearchBar.heightAnchor.constraint(equalToConstant: 70),
                
-               // Ограничения для searchBar
                searchBar.centerYAnchor.constraint(equalTo: containerSearchBar.centerYAnchor),
                searchBar.leadingAnchor.constraint(equalTo: containerSearchBar.leadingAnchor),
                searchBar.trailingAnchor.constraint(equalTo: containerSearchBar.trailingAnchor),
                
-               // Ограничения для containerView
                containerView.topAnchor.constraint(equalTo: containerSearchBar.bottomAnchor, constant: 10),
                containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
                containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
                containerView.heightAnchor.constraint(equalToConstant: 400),
                
-               // Ограничения для текущего местоположения
                currentLocationButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
                currentLocationButton.heightAnchor.constraint(equalToConstant: 30),
                currentLocationButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
                
-               // Остальные ограничения
                cityLabel.topAnchor.constraint(equalTo: currentLocationButton.bottomAnchor, constant: 10),
                cityLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
                
@@ -203,7 +196,6 @@ final class WeatherViewController: UIViewController {
                infoStack.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor, constant: 20),
                infoStack.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
                
-               // Важно: привязываем contentView к нижней части, чтобы scrollView знал, где заканчивается контент
                infoStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
            ])
        }
@@ -262,7 +254,11 @@ final class WeatherViewController: UIViewController {
     }
     
     @objc private func currentLocationButtonAction() {
-        viewModel.fetchCurrentLocation()
+        searchBar.text = nil
+        hideKeyboard()
+        viewModel.isSearchByCity = false
+        viewModel.fetchWeatherOneDay(city: viewModel.city)
+        print("currentLocationButtonAction")
     }
     
     @objc private func hideKeyboard() {
@@ -272,6 +268,7 @@ final class WeatherViewController: UIViewController {
 
 extension WeatherViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.isSearchByCity = true
         viewModel.fetchWeatherOneDay(city: searchText)
     }
     

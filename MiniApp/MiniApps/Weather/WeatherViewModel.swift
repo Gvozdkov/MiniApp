@@ -9,7 +9,6 @@ import Foundation
 import CoreLocation
 
 final class WeatherViewModel: NSObject {
-    var onWeatherDataReceived: (() -> Void)?
     private(set) var city: String = "Moscow" {
         didSet {
                 fetchWeatherOneDay(city: city)
@@ -17,8 +16,9 @@ final class WeatherViewModel: NSObject {
     }
     
     private(set) var weather: WeatherOneDayModel?
-    
     public var locationManager = CLLocationManager()
+    var onWeatherDataReceived: (() -> Void)?
+    var isSearchByCity: Bool = false
 
     override init() {
         super.init()
@@ -30,7 +30,7 @@ final class WeatherViewModel: NSObject {
         locationManager.requestWhenInUseAuthorization()
     }
     
-    private func fetchCityFromLocation(_ location: CLLocation) {
+    func fetchCityFromLocation(_ location: CLLocation) {
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
             if let error = error {
@@ -75,7 +75,9 @@ final class WeatherViewModel: NSObject {
     }
     
     func fetchCurrentLocation() {
-        locationManager.startUpdatingLocation()
+        if !isSearchByCity {
+            locationManager.startUpdatingLocation()
+        }
     }
 }
 
