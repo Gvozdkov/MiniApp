@@ -46,7 +46,7 @@ final class WeatherViewController: UIViewController {
         return searchBar
     }()
     
-    private lazy var containerView: UIView = {
+    private lazy var containerViewTemperature: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.shadowColor = UIColor.gray.cgColor
@@ -93,6 +93,18 @@ final class WeatherViewController: UIViewController {
         return label
     }()
     
+    private lazy var containerViewWeatherDetails: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.shadowColor = UIColor.gray.cgColor
+        view.layer.shadowOpacity = 0.2
+        view.layer.shadowOffset = CGSize(width: 4, height: 4)
+        view.layer.shadowRadius = 8
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    
     private lazy var feelsLikeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -135,70 +147,74 @@ final class WeatherViewController: UIViewController {
         view.backgroundColor = .white
         settingsViewController()
         setupTapGestureToHideKeyboard()
-        viewModel.requestLocationAuthorization()
+        viewModel.fetchCurrentLocation()
         setupWeatherDataBinding()
         viewModel.fetchWeatherOneDay(city: viewModel.city)
     }
     
     private func settingsViewController() {
         view.addSubview(scrollView)
-          scrollView.addSubview(contentView)
-          
-          contentView.addSubview(containerSearchBar)
-          containerSearchBar.addSubview(searchBar)
-          
-          contentView.addSubview(containerView)
-          containerView.addSubview(currentLocationButton)
-          containerView.addSubview(cityLabel)
-          containerView.addSubview(temperatureLabel)
-          containerView.addSubview(degreeСelsiusLabel)
-          containerView.addSubview(infoStack)
-       
+        scrollView.addSubview(contentView)
+        contentView.addSubview(containerSearchBar)
+        contentView.addSubview(containerViewTemperature)
+        contentView.addSubview(containerViewWeatherDetails)
+        
+        containerSearchBar.addSubview(searchBar)
+        containerViewTemperature.addSubview(currentLocationButton)
+        containerViewTemperature.addSubview(cityLabel)
+        containerViewTemperature.addSubview(temperatureLabel)
+        containerViewTemperature.addSubview(degreeСelsiusLabel)
+        containerViewWeatherDetails.addSubview(infoStack)
+        
         NSLayoutConstraint.activate([
-               scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-               scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-               scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-               scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-               
-               contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-               contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-               contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-               contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-               contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-               
-               containerSearchBar.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
-               containerSearchBar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-               containerSearchBar.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
-               containerSearchBar.heightAnchor.constraint(equalToConstant: 70),
-               
-               searchBar.centerYAnchor.constraint(equalTo: containerSearchBar.centerYAnchor),
-               searchBar.leadingAnchor.constraint(equalTo: containerSearchBar.leadingAnchor),
-               searchBar.trailingAnchor.constraint(equalTo: containerSearchBar.trailingAnchor),
-               
-               containerView.topAnchor.constraint(equalTo: containerSearchBar.bottomAnchor, constant: 10),
-               containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-               containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
-               containerView.heightAnchor.constraint(equalToConstant: 400),
-               
-               currentLocationButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
-               currentLocationButton.heightAnchor.constraint(equalToConstant: 30),
-               currentLocationButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-               
-               cityLabel.topAnchor.constraint(equalTo: currentLocationButton.bottomAnchor, constant: 10),
-               cityLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-               
-               temperatureLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 10),
-               temperatureLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-               
-               degreeСelsiusLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 5),
-               degreeСelsiusLabel.leadingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor, constant: 5),
-               
-               infoStack.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor, constant: 20),
-               infoStack.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-               
-               infoStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
-           ])
-       }
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor), // важное ограничение для работы scroll
+            contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor, constant: 140),
+            
+            containerSearchBar.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+            containerSearchBar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+            containerSearchBar.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
+            containerSearchBar.heightAnchor.constraint(equalToConstant: 70),
+            
+            searchBar.centerYAnchor.constraint(equalTo: containerSearchBar.centerYAnchor),
+            searchBar.leadingAnchor.constraint(equalTo: containerSearchBar.leadingAnchor),
+            searchBar.trailingAnchor.constraint(equalTo: containerSearchBar.trailingAnchor),
+            
+            containerViewTemperature.topAnchor.constraint(equalTo: containerSearchBar.bottomAnchor, constant: 10),
+            containerViewTemperature.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+            containerViewTemperature.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
+            containerViewTemperature.heightAnchor.constraint(equalToConstant: 260),
+            
+            currentLocationButton.topAnchor.constraint(equalTo: containerViewTemperature.topAnchor, constant: 20),
+            currentLocationButton.centerXAnchor.constraint(equalTo: containerViewTemperature.centerXAnchor),
+            currentLocationButton.heightAnchor.constraint(equalToConstant: 40),
+            
+            cityLabel.topAnchor.constraint(equalTo: currentLocationButton.bottomAnchor, constant: 10),
+            cityLabel.centerXAnchor.constraint(equalTo: containerViewTemperature.centerXAnchor),
+            
+            temperatureLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 10),
+            temperatureLabel.centerXAnchor.constraint(equalTo: containerViewTemperature.centerXAnchor),
+            
+            degreeСelsiusLabel.centerYAnchor.constraint(equalTo: temperatureLabel.centerYAnchor),
+            degreeСelsiusLabel.leadingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor, constant: 5),
+            
+            containerViewWeatherDetails.topAnchor.constraint(equalTo: containerViewTemperature.bottomAnchor, constant: 10),
+            containerViewWeatherDetails.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+            containerViewWeatherDetails.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
+            containerViewWeatherDetails.heightAnchor.constraint(equalToConstant: 140),
+            
+            infoStack.centerYAnchor.constraint(equalTo: containerViewWeatherDetails.centerYAnchor),
+            infoStack.centerXAnchor.constraint(equalTo: containerViewWeatherDetails.centerXAnchor)
+        ])
+    }
     
     private func updateWeather() {
         if let city = viewModel.weather?.name {
@@ -256,12 +272,13 @@ final class WeatherViewController: UIViewController {
     @objc private func currentLocationButtonAction() {
         searchBar.text = nil
         hideKeyboard()
-        viewModel.isSearchByCity = false
+        viewModel.isSearchByCity = true
         viewModel.fetchWeatherOneDay(city: viewModel.city)
         print("currentLocationButtonAction")
     }
     
     @objc private func hideKeyboard() {
+        viewModel.isSearchByCity = true
         view.endEditing(true)
     }
 }
@@ -273,6 +290,7 @@ extension WeatherViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.isSearchByCity = true
         searchBar.resignFirstResponder()
     }
 }

@@ -28,6 +28,12 @@ final class CoordinatorVC: Coordinating {
     func showWeatherViewController() {
         let weatherViewController = WeatherViewController()
         weatherViewController.coordinator = self
+        
+        if let sheet = weatherViewController.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.preferredCornerRadius = 20
+        }
+        
         navigationController?.present(weatherViewController, animated: true)
     }   
     
