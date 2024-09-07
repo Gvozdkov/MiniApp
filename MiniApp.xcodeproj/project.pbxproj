@@ -14,9 +14,9 @@
 		E74650512C88CFF7008354FF /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E74650502C88CFF7008354FF /* Base */; };
 		E74650592C88D2C9008354FF /* CoordinatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74650582C88D2C9008354FF /* CoordinatorVC.swift */; };
 		E746505B2C88F84A008354FF /* MiniAppsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E746505A2C88F84A008354FF /* MiniAppsCell.swift */; };
+		E760C02F2C8C2F9900F389F7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E760C02E2C8C2F9900F389F7 /* Alamofire */; };
 		E76D176B2C8A696300CF3096 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D176A2C8A696300CF3096 /* NetworkManager.swift */; };
 		E76D176E2C8A699100CF3096 /* NetworkURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D176D2C8A699100CF3096 /* NetworkURL.swift */; };
-		E76D17712C8A69C500CF3096 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E76D17702C8A69C500CF3096 /* Alamofire */; };
 		E76D17732C8B535000CF3096 /* WeatherOneDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D17722C8B535000CF3096 /* WeatherOneDayModel.swift */; };
 		E76D17752C8B53F600CF3096 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D17742C8B53F600CF3096 /* WeatherViewModel.swift */; };
 		E7928A832C895B390034C71D /* MiniAppsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7928A822C895B390034C71D /* MiniAppsModel.swift */; };
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E76D17712C8A69C500CF3096 /* Alamofire in Frameworks */,
+				E760C02F2C8C2F9900F389F7 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,7 +193,7 @@
 			);
 			name = MiniApp;
 			packageProductDependencies = (
-				E76D17702C8A69C500CF3096 /* Alamofire */,
+				E760C02E2C8C2F9900F389F7 /* Alamofire */,
 			);
 			productName = MiniApp;
 			productReference = E74650412C88CFF5008354FF /* MiniApp.app */;
@@ -502,7 +502,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E76D17702C8A69C500CF3096 /* Alamofire */ = {
+		E760C02E2C8C2F9900F389F7 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E76D176F2C8A69C500CF3096 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
