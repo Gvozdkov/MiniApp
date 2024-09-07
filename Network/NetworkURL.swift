@@ -8,12 +8,18 @@
 import Foundation
 
 enum NetworkURL {
-    case mocMiniApps
+    case miniApps
+    case weather(city: String)
     
     var url: URL? {
         switch self {
-        case .mocMiniApps:
-            return URL(string: "https://run.mocky.io/v3/a61cc1d8-88cc-4770-b125-97a40322c470")
+        case .miniApps:
+            return URL(string: "https://run.mocky.io/v3/5fe3b1f7-65a1-4c31-9715-aaa3feab0ebb")
+        case .weather(let city):
+            let apiKey = "9e3c2f666b0e284e9d40e0331813110f"
+            let baseUrl = "https://api.openweathermap.org/data/2.5/weather"
+            let urlString = "\(baseUrl)?q=\(city)&appid=\(apiKey)&units=metric"
+            return URL(string: urlString)
         }
     }
 }
