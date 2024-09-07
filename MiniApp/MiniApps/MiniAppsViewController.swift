@@ -96,8 +96,6 @@ extension MiniAppsViewController: UICollectionViewDelegate {
             coordinator?.showMapViewController()        
         case 2:
             coordinator?.showShopViewController()      
-        case 3:
-            coordinator?.showGameViewController()
         default:
             break
         }
