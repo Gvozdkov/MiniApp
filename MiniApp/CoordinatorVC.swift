@@ -34,8 +34,15 @@ final class CoordinatorVC: Coordinating {
     func showMapViewController() {
         let mapViewController = MapViewController()
         mapViewController.coordinator = self
+        mapViewController.modalPresentationStyle = .pageSheet
+        
+        if let sheet = mapViewController.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.preferredCornerRadius = 20
+        }
+        
         navigationController?.present(mapViewController, animated: true)
-    }    
+    }
     
     func showShopViewController() {
         let shopViewController = ShopViewController()
