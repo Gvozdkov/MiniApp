@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E70B82682C8C482800FADEFC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E70B82672C8C482800FADEFC /* Alamofire */; };
 		E74650452C88CFF5008354FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74650442C88CFF5008354FF /* AppDelegate.swift */; };
 		E74650472C88CFF5008354FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74650462C88CFF5008354FF /* SceneDelegate.swift */; };
 		E74650492C88CFF5008354FF /* MiniAppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74650482C88CFF5008354FF /* MiniAppsViewController.swift */; };
@@ -14,7 +15,6 @@
 		E74650512C88CFF7008354FF /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E74650502C88CFF7008354FF /* Base */; };
 		E74650592C88D2C9008354FF /* CoordinatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74650582C88D2C9008354FF /* CoordinatorVC.swift */; };
 		E746505B2C88F84A008354FF /* MiniAppsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E746505A2C88F84A008354FF /* MiniAppsCell.swift */; };
-		E760C0332C8C44CD00F389F7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E760C0322C8C44CD00F389F7 /* Alamofire */; };
 		E76D176B2C8A696300CF3096 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D176A2C8A696300CF3096 /* NetworkManager.swift */; };
 		E76D176E2C8A699100CF3096 /* NetworkURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D176D2C8A699100CF3096 /* NetworkURL.swift */; };
 		E76D17732C8B535000CF3096 /* WeatherOneDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D17722C8B535000CF3096 /* WeatherOneDayModel.swift */; };
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E760C0332C8C44CD00F389F7 /* Alamofire in Frameworks */,
+				E70B82682C8C482800FADEFC /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,7 +193,7 @@
 			);
 			name = MiniApp;
 			packageProductDependencies = (
-				E760C0322C8C44CD00F389F7 /* Alamofire */,
+				E70B82672C8C482800FADEFC /* Alamofire */,
 			);
 			productName = MiniApp;
 			productReference = E74650412C88CFF5008354FF /* MiniApp.app */;
@@ -502,7 +502,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E760C0322C8C44CD00F389F7 /* Alamofire */ = {
+		E70B82672C8C482800FADEFC /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E76D176F2C8A69C500CF3096 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
