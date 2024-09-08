@@ -10,6 +10,11 @@ import UIKit
 final class WeatherViewController: UIViewController {
     weak var coordinator: CoordinatorVC?
     private var viewModel = WeatherViewModel()
+    private let universalUIElements = UniversalUIElements()
+    
+    private lazy var lineView: UIView = {
+        return universalUIElements.createLineView()
+    }()
     
     private lazy var scrollView: UIScrollView = {
         let scroll = UIScrollView()
@@ -24,15 +29,7 @@ final class WeatherViewController: UIViewController {
     }()
     
     private lazy var containerSearchBar: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.shadowColor = UIColor.gray.cgColor
-        view.layer.shadowOpacity = 0.2
-        view.layer.shadowOffset = CGSize(width: 4, height: 4)
-        view.layer.shadowRadius = 8
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 10
-        return view
+        return universalUIElements.createShadowContainerView()
     }()
     
     private lazy var searchBar: UISearchBar = {
@@ -47,15 +44,7 @@ final class WeatherViewController: UIViewController {
     }()
     
     private lazy var containerViewTemperature: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.shadowColor = UIColor.gray.cgColor
-        view.layer.shadowOpacity = 0.2
-        view.layer.shadowOffset = CGSize(width: 4, height: 4)
-        view.layer.shadowRadius = 8
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 10
-        return view
+        return universalUIElements.createShadowContainerView()
     }()
     
     private lazy var currentLocationButton: UIButton = {
@@ -71,66 +60,49 @@ final class WeatherViewController: UIViewController {
     }()
     
     private lazy var cityLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 32, weight: .bold)
-        return label
+        return universalUIElements.createLabel(fontSize: 32,
+                                               weight: .bold,
+                                               textColor: .black)
     }()
     
     private lazy var temperatureLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 100, weight: .light)
-        label.textColor = .systemBlue
-        return label
+        return universalUIElements.createLabel(fontSize: 100,
+                                               weight: .light,
+                                               textColor: .systemBlue)
     }()
     
     private lazy var degreeСelsiusLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 100, weight: .light)
-        label.textColor = .systemBlue
-        return label
+        return universalUIElements.createLabel(fontSize: 100,
+                                               weight: .light,
+                                               textColor: .systemBlue)
     }()
     
     private lazy var containerViewWeatherDetails: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.shadowColor = UIColor.gray.cgColor
-        view.layer.shadowOpacity = 0.2
-        view.layer.shadowOffset = CGSize(width: 4, height: 4)
-        view.layer.shadowRadius = 8
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 10
-        return view
+        return universalUIElements.createShadowContainerView()
     }()
     
     private lazy var feelsLikeLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 16, weight: .ultraLight)
-        return label
+        return universalUIElements.createLabel(fontSize: 16,
+                                               weight: .ultraLight,
+                                               textColor: .black)
     }()
     
     private lazy var windSpeedLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 16, weight: .ultraLight)
-        return label
+        return universalUIElements.createLabel(fontSize: 16,
+                                               weight: .ultraLight,
+                                               textColor: .black)
     }()
     
     private lazy var airPressureLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 16, weight: .ultraLight)
-        return label
+        return universalUIElements.createLabel(fontSize: 16,
+                                               weight: .ultraLight,
+                                               textColor: .black)
     }()
     
     private lazy var airHumidityLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 16, weight: .ultraLight)
-        return label
+        return universalUIElements.createLabel(fontSize: 16,
+                                               weight: .ultraLight,
+                                               textColor: .black)
     }()
     
     private lazy var infoStack: UIStackView = {
@@ -147,14 +119,13 @@ final class WeatherViewController: UIViewController {
         view.backgroundColor = .white
         settingsViewController()
         setupTapGestureToHideKeyboard()
-        viewModel.fetchCurrentLocation()
         setupWeatherDataBinding()
-        viewModel.fetchWeatherOneDay(city: viewModel.city)
     }
     
     private func settingsViewController() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
+        contentView.addSubview(lineView)
         contentView.addSubview(containerSearchBar)
         contentView.addSubview(containerViewTemperature)
         contentView.addSubview(containerViewWeatherDetails)
@@ -176,12 +147,17 @@ final class WeatherViewController: UIViewController {
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor), 
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor, constant: 140),
             
-            containerSearchBar.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
-            containerSearchBar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            containerSearchBar.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
+            lineView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            lineView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            lineView.heightAnchor.constraint(equalToConstant: 5),
+            lineView.widthAnchor.constraint(equalToConstant: 60),
+            
+            containerSearchBar.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 20),
+            containerSearchBar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            containerSearchBar.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             containerSearchBar.heightAnchor.constraint(equalToConstant: 70),
             
             searchBar.centerYAnchor.constraint(equalTo: containerSearchBar.centerYAnchor),
@@ -189,8 +165,8 @@ final class WeatherViewController: UIViewController {
             searchBar.trailingAnchor.constraint(equalTo: containerSearchBar.trailingAnchor),
             
             containerViewTemperature.topAnchor.constraint(equalTo: containerSearchBar.bottomAnchor, constant: 10),
-            containerViewTemperature.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            containerViewTemperature.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
+            containerViewTemperature.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            containerViewTemperature.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             containerViewTemperature.heightAnchor.constraint(equalToConstant: 260),
             
             currentLocationButton.topAnchor.constraint(equalTo: containerViewTemperature.topAnchor, constant: 20),
@@ -207,8 +183,8 @@ final class WeatherViewController: UIViewController {
             degreeСelsiusLabel.leadingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor, constant: 5),
             
             containerViewWeatherDetails.topAnchor.constraint(equalTo: containerViewTemperature.bottomAnchor, constant: 10),
-            containerViewWeatherDetails.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            containerViewWeatherDetails.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
+            containerViewWeatherDetails.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            containerViewWeatherDetails.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             containerViewWeatherDetails.heightAnchor.constraint(equalToConstant: 140),
             
             infoStack.centerYAnchor.constraint(equalTo: containerViewWeatherDetails.centerYAnchor),
@@ -222,7 +198,7 @@ final class WeatherViewController: UIViewController {
         } else {
             cityLabel.text = "--"
         }
-       
+        
         if let temp = viewModel.weather?.main.temp {
             temperatureLabel.text = String(format: "%.1f", temp)
         } else {
@@ -248,7 +224,7 @@ final class WeatherViewController: UIViewController {
         } else {
             airPressureLabel.text = "--"
         }
-         
+        
         if let airHumidity = viewModel.weather?.main.humidity {
             airHumidityLabel.text = "Влажность воздуха \(airHumidity)%"
         } else {
@@ -272,9 +248,8 @@ final class WeatherViewController: UIViewController {
     @objc private func currentLocationButtonAction() {
         searchBar.text = nil
         hideKeyboard()
-        viewModel.isSearchByCity = true
-        viewModel.fetchWeatherOneDay(city: viewModel.city)
-        print("currentLocationButtonAction")
+        viewModel.isSearchByCity = false
+        viewModel.fetchCurrentLocation()
     }
     
     @objc private func hideKeyboard() {
