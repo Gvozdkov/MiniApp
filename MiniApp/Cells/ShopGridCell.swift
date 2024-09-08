@@ -161,7 +161,7 @@ final class ShopGridCell: UICollectionViewCell {
             contentView.bottomAnchor.constraint(equalTo: shadowContainerView.bottomAnchor),
             
             productImage.topAnchor.constraint(equalTo: contentView.topAnchor),
-            productImage.leadingAnchor.constraint(equalTo: shadowContainerView.leadingAnchor),
+            productImage.centerXAnchor.constraint(equalTo: shadowContainerView.centerXAnchor),
             
             promotionalView.topAnchor.constraint(equalTo: productImage.topAnchor),
             promotionalView.leadingAnchor.constraint(equalTo: productImage.leadingAnchor),
@@ -205,9 +205,9 @@ final class ShopGridCell: UICollectionViewCell {
             coutingsButtonsView.heightAnchor.constraint(equalToConstant: 36),
             
             unitMeasurementView.bottomAnchor.constraint(equalTo: coutingsButtonsView.topAnchor, constant: -4),
-            unitMeasurementView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
-            unitMeasurementView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
             unitMeasurementView.heightAnchor.constraint(equalToConstant: 28),
+            unitMeasurementView.widthAnchor.constraint(equalToConstant: 160),
+            unitMeasurementView.centerXAnchor.constraint(equalTo: coutingsButtonsView.centerXAnchor),
             
             likeButtonsView.topAnchor.constraint(equalTo: contentView.topAnchor),
             likeButtonsView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
