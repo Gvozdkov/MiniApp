@@ -19,12 +19,23 @@
 		E76D176E2C8A699100CF3096 /* NetworkURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D176D2C8A699100CF3096 /* NetworkURL.swift */; };
 		E76D17732C8B535000CF3096 /* WeatherOneDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D17722C8B535000CF3096 /* WeatherOneDayModel.swift */; };
 		E76D17752C8B53F600CF3096 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D17742C8B53F600CF3096 /* WeatherViewModel.swift */; };
+		E77494F22C8CB35300B304CA /* ShopViewModelL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77494F12C8CB35300B304CA /* ShopViewModelL.swift */; };
+		E77494F42C8CB37C00B304CA /* ShopGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77494F32C8CB37C00B304CA /* ShopGridCell.swift */; };
+		E77494F72C8CB3B600B304CA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E77494F62C8CB3B600B304CA /* Kingfisher */; };
+		E77494F92C8CB42E00B304CA /* ShopProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77494F82C8CB42E00B304CA /* ShopProductModel.swift */; };
+		E77494FE2C8CB7A400B304CA /* AnimateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77494FD2C8CB7A400B304CA /* AnimateView.swift */; };
+		E77495012C8CB7DA00B304CA /* UniversalUIElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77495002C8CB7DA00B304CA /* UniversalUIElements.swift */; };
+		E77495032C8CB7FB00B304CA /* UpdateUniversalUIElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77495022C8CB7FB00B304CA /* UpdateUniversalUIElements.swift */; };
+		E77495052C8CB81A00B304CA /* CartButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77495042C8CB81A00B304CA /* CartButtonView.swift */; };
+		E77495072C8CB84700B304CA /* LikeButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77495062C8CB84700B304CA /* LikeButtonsView.swift */; };
+		E774950A2C8CB8AC00B304CA /* CoutingsButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77495092C8CB8AC00B304CA /* CoutingsButtonsView.swift */; };
+		E774950C2C8CB8C100B304CA /* UnitMeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774950B2C8CB8C100B304CA /* UnitMeasurementView.swift */; };
+		E774950E2C8CB99B00B304CA /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774950D2C8CB99B00B304CA /* Colors.swift */; };
 		E7928A832C895B390034C71D /* MiniAppsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7928A822C895B390034C71D /* MiniAppsModel.swift */; };
 		E7928A852C895BCF0034C71D /* MiniAppsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7928A842C895BCF0034C71D /* MiniAppsViewModel.swift */; };
 		E7928A8B2C89CA0F0034C71D /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7928A8A2C89CA0F0034C71D /* WeatherViewController.swift */; };
 		E7928A8D2C8A25190034C71D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7928A8C2C8A25190034C71D /* MapViewController.swift */; };
 		E7928A912C8A28510034C71D /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7928A902C8A28510034C71D /* ShopViewController.swift */; };
-		E7928A942C8A498B0034C71D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7928A932C8A498B0034C71D /* GameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,12 +52,22 @@
 		E76D176D2C8A699100CF3096 /* NetworkURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkURL.swift; sourceTree = "<group>"; };
 		E76D17722C8B535000CF3096 /* WeatherOneDayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherOneDayModel.swift; sourceTree = "<group>"; };
 		E76D17742C8B53F600CF3096 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		E77494F12C8CB35300B304CA /* ShopViewModelL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewModelL.swift; sourceTree = "<group>"; };
+		E77494F32C8CB37C00B304CA /* ShopGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopGridCell.swift; sourceTree = "<group>"; };
+		E77494F82C8CB42E00B304CA /* ShopProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopProductModel.swift; sourceTree = "<group>"; };
+		E77494FD2C8CB7A400B304CA /* AnimateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateView.swift; sourceTree = "<group>"; };
+		E77495002C8CB7DA00B304CA /* UniversalUIElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalUIElements.swift; sourceTree = "<group>"; };
+		E77495022C8CB7FB00B304CA /* UpdateUniversalUIElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUniversalUIElements.swift; sourceTree = "<group>"; };
+		E77495042C8CB81A00B304CA /* CartButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartButtonView.swift; sourceTree = "<group>"; };
+		E77495062C8CB84700B304CA /* LikeButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonsView.swift; sourceTree = "<group>"; };
+		E77495092C8CB8AC00B304CA /* CoutingsButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoutingsButtonsView.swift; sourceTree = "<group>"; };
+		E774950B2C8CB8C100B304CA /* UnitMeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitMeasurementView.swift; sourceTree = "<group>"; };
+		E774950D2C8CB99B00B304CA /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E7928A822C895B390034C71D /* MiniAppsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppsModel.swift; sourceTree = "<group>"; };
 		E7928A842C895BCF0034C71D /* MiniAppsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppsViewModel.swift; sourceTree = "<group>"; };
 		E7928A8A2C89CA0F0034C71D /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		E7928A8C2C8A25190034C71D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E7928A902C8A28510034C71D /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
-		E7928A932C8A498B0034C71D /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E77494F72C8CB3B600B304CA /* Kingfisher in Frameworks */,
 				E70B82682C8C482800FADEFC /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,6 +110,7 @@
 				E7928A862C89C6EA0034C71D /* Cells */,
 				E7928A872C89C6FF0034C71D /* Models */,
 				E76D176C2C8A696E00CF3096 /* Network */,
+				E77494FA2C8CB77F00B304CA /* Helper */,
 				E746504D2C88CFF7008354FF /* Assets.xcassets */,
 				E746504F2C88CFF7008354FF /* LaunchScreen.storyboard */,
 				E74650522C88CFF7008354FF /* Info.plist */,
@@ -105,10 +128,42 @@
 			path = ../Network;
 			sourceTree = "<group>";
 		};
+		E77494FA2C8CB77F00B304CA /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				E774950D2C8CB99B00B304CA /* Colors.swift */,
+				E77494FD2C8CB7A400B304CA /* AnimateView.swift */,
+				E77495082C8CB88400B304CA /* CustomUIElements */,
+				E77494FF2C8CB7B800B304CA /* UniversalUIElements */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		E77494FF2C8CB7B800B304CA /* UniversalUIElements */ = {
+			isa = PBXGroup;
+			children = (
+				E77495002C8CB7DA00B304CA /* UniversalUIElements.swift */,
+				E77495022C8CB7FB00B304CA /* UpdateUniversalUIElements.swift */,
+			);
+			path = UniversalUIElements;
+			sourceTree = "<group>";
+		};
+		E77495082C8CB88400B304CA /* CustomUIElements */ = {
+			isa = PBXGroup;
+			children = (
+				E77495042C8CB81A00B304CA /* CartButtonView.swift */,
+				E77495092C8CB8AC00B304CA /* CoutingsButtonsView.swift */,
+				E774950B2C8CB8C100B304CA /* UnitMeasurementView.swift */,
+				E77495062C8CB84700B304CA /* LikeButtonsView.swift */,
+			);
+			path = CustomUIElements;
+			sourceTree = "<group>";
+		};
 		E7928A862C89C6EA0034C71D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				E746505A2C88F84A008354FF /* MiniAppsCell.swift */,
+				E77494F32C8CB37C00B304CA /* ShopGridCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -116,6 +171,7 @@
 		E7928A872C89C6FF0034C71D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E77494F82C8CB42E00B304CA /* ShopProductModel.swift */,
 				E7928A822C895B390034C71D /* MiniAppsModel.swift */,
 				E76D17722C8B535000CF3096 /* WeatherOneDayModel.swift */,
 			);
@@ -128,7 +184,6 @@
 				E7928A892C89C9F40034C71D /* Weather */,
 				E7928A8E2C8A25270034C71D /* Map */,
 				E7928A8F2C8A28350034C71D /* Shop */,
-				E7928A922C8A49710034C71D /* Game */,
 			);
 			path = MiniApps;
 			sourceTree = "<group>";
@@ -154,16 +209,9 @@
 			isa = PBXGroup;
 			children = (
 				E7928A902C8A28510034C71D /* ShopViewController.swift */,
+				E77494F12C8CB35300B304CA /* ShopViewModelL.swift */,
 			);
 			path = Shop;
-			sourceTree = "<group>";
-		};
-		E7928A922C8A49710034C71D /* Game */ = {
-			isa = PBXGroup;
-			children = (
-				E7928A932C8A498B0034C71D /* GameViewController.swift */,
-			);
-			path = Game;
 			sourceTree = "<group>";
 		};
 		E7928A952C8A4A4F0034C71D /* MiniAppsVC */ = {
@@ -194,6 +242,7 @@
 			name = MiniApp;
 			packageProductDependencies = (
 				E70B82672C8C482800FADEFC /* Alamofire */,
+				E77494F62C8CB3B600B304CA /* Kingfisher */,
 			);
 			productName = MiniApp;
 			productReference = E74650412C88CFF5008354FF /* MiniApp.app */;
@@ -225,6 +274,7 @@
 			mainGroup = E74650382C88CFF5008354FF;
 			packageReferences = (
 				E76D176F2C8A69C500CF3096 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				E77494F52C8CB3B600B304CA /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = E74650422C88CFF5008354FF /* Products */;
 			projectDirPath = "";
@@ -252,21 +302,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E77494F22C8CB35300B304CA /* ShopViewModelL.swift in Sources */,
+				E77495032C8CB7FB00B304CA /* UpdateUniversalUIElements.swift in Sources */,
+				E77494F92C8CB42E00B304CA /* ShopProductModel.swift in Sources */,
 				E76D176B2C8A696300CF3096 /* NetworkManager.swift in Sources */,
+				E774950A2C8CB8AC00B304CA /* CoutingsButtonsView.swift in Sources */,
 				E74650492C88CFF5008354FF /* MiniAppsViewController.swift in Sources */,
+				E774950E2C8CB99B00B304CA /* Colors.swift in Sources */,
 				E7928A8B2C89CA0F0034C71D /* WeatherViewController.swift in Sources */,
 				E7928A912C8A28510034C71D /* ShopViewController.swift in Sources */,
 				E7928A832C895B390034C71D /* MiniAppsModel.swift in Sources */,
-				E7928A942C8A498B0034C71D /* GameViewController.swift in Sources */,
+				E77494FE2C8CB7A400B304CA /* AnimateView.swift in Sources */,
 				E7928A8D2C8A25190034C71D /* MapViewController.swift in Sources */,
 				E74650452C88CFF5008354FF /* AppDelegate.swift in Sources */,
 				E74650472C88CFF5008354FF /* SceneDelegate.swift in Sources */,
 				E76D176E2C8A699100CF3096 /* NetworkURL.swift in Sources */,
+				E77495072C8CB84700B304CA /* LikeButtonsView.swift in Sources */,
 				E76D17752C8B53F600CF3096 /* WeatherViewModel.swift in Sources */,
 				E76D17732C8B535000CF3096 /* WeatherOneDayModel.swift in Sources */,
 				E74650592C88D2C9008354FF /* CoordinatorVC.swift in Sources */,
 				E746505B2C88F84A008354FF /* MiniAppsCell.swift in Sources */,
 				E7928A852C895BCF0034C71D /* MiniAppsViewModel.swift in Sources */,
+				E77495052C8CB81A00B304CA /* CartButtonView.swift in Sources */,
+				E774950C2C8CB8C100B304CA /* UnitMeasurementView.swift in Sources */,
+				E77495012C8CB7DA00B304CA /* UniversalUIElements.swift in Sources */,
+				E77494F42C8CB37C00B304CA /* ShopGridCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +559,14 @@
 				minimumVersion = 5.9.1;
 			};
 		};
+		E77494F52C8CB3B600B304CA /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -506,6 +574,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E76D176F2C8A69C500CF3096 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		E77494F62C8CB3B600B304CA /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E77494F52C8CB3B600B304CA /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

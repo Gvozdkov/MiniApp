@@ -13,7 +13,6 @@ protocol Coordinating {
     func showWeatherViewController()
     func showMapViewController()
     func showShopViewController()
-    func showGameViewController()
 }
 
 final class CoordinatorVC: Coordinating {
@@ -53,15 +52,14 @@ final class CoordinatorVC: Coordinating {
     func showShopViewController() {
         let shopViewController = ShopViewController()
         shopViewController.coordinator = self
+        shopViewController.modalPresentationStyle = .pageSheet
+        
+        if let sheet = shopViewController.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.preferredCornerRadius = 20
+        }
+        
         navigationController?.present(shopViewController, animated: true)
-    }   
-    
-    func showGameViewController() {
-        let gameViewController = GameViewController()
-        gameViewController.coordinator = self
-        navigationController?.present(gameViewController, animated: true)
     }
-    
-    
 }
 
