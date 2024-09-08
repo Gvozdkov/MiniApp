@@ -10,12 +10,12 @@ import UIKit
 final class MiniAppsViewController: UIViewController {
     weak var coordinator: CoordinatorVC?
     private var viewModel = MiniAppsViewModel()
+    private let universalUIElements = UniversalUIElements()
     
     private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        label.textColor = .black
+        let label = universalUIElements.createLabel(fontSize: 18, 
+                                                    weight: .regular,
+                                                    textColor: .black)
         label.text = "Mini apps"
         return label
     }()
@@ -29,6 +29,7 @@ final class MiniAppsViewController: UIViewController {
         collection.register(MiniAppsCell.self, forCellWithReuseIdentifier: MiniAppsCell.cellIdentifier)
         collection.delegate = self
         collection.dataSource = self
+        collection.backgroundColor = .white
         return collection
     }()
     
