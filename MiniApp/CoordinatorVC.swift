@@ -52,6 +52,13 @@ final class CoordinatorVC: Coordinating {
     func showShopViewController() {
         let shopViewController = ShopViewController()
         shopViewController.coordinator = self
+        shopViewController.modalPresentationStyle = .pageSheet
+        
+        if let sheet = shopViewController.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.preferredCornerRadius = 20
+        }
+        
         navigationController?.present(shopViewController, animated: true)
     }
 }
