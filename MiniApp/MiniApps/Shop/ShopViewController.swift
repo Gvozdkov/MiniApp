@@ -16,6 +16,18 @@ final class ShopViewController: UIViewController {
         return universalUIElements.createLineView()
     }()
     
+    private lazy var scrollView: UIScrollView = {
+        let scroll = UIScrollView()
+        scroll.translatesAutoresizingMaskIntoConstraints = false
+        return scroll
+    }()
+    
+    private lazy var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private lazy var shopCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -36,23 +48,37 @@ final class ShopViewController: UIViewController {
     }
     
     private func settingsViewController() {
-        view.backgroundColor = .white
-        
-        view.addSubview(lineView)
-        view.addSubview(shopCollection)
-        
-        NSLayoutConstraint.activate([
-            lineView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            lineView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            lineView.heightAnchor.constraint(equalToConstant: 5),
-            lineView.widthAnchor.constraint(equalToConstant: 60),
-
-            shopCollection.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 10),
-            shopCollection.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            shopCollection.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            shopCollection.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
-    }
+           view.backgroundColor = .white
+           
+           view.addSubview(scrollView)
+           scrollView.addSubview(contentView)
+           contentView.addSubview(lineView)
+           contentView.addSubview(shopCollection)
+           
+           NSLayoutConstraint.activate([
+               scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+               scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+               scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+               scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+               
+               contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+               contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+               contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+               contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+               contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+               
+               lineView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+               lineView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+               lineView.heightAnchor.constraint(equalToConstant: 5),
+               lineView.widthAnchor.constraint(equalToConstant: 60),
+               
+               shopCollection.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 10),
+               shopCollection.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+               shopCollection.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+               shopCollection.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+               shopCollection.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+           ])
+       }
     
     private func reloadDataCollection() {
         viewModel.onDataLoaded = { [weak self] in
@@ -105,6 +131,6 @@ extension ShopViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 2, bottom: 10, right: 2) 
+        return UIEdgeInsets(top: 10, left: 2, bottom: 10, right: 2)
     }
 }
