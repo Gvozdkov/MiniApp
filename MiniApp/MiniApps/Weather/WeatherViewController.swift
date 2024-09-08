@@ -119,9 +119,7 @@ final class WeatherViewController: UIViewController {
         view.backgroundColor = .white
         settingsViewController()
         setupTapGestureToHideKeyboard()
-        viewModel.fetchCurrentLocation()
-        //        setupWeatherDataBinding()
-        //        viewModel.fetchWeatherOneDay(city: viewModel.city)
+        setupWeatherDataBinding()
     }
     
     private func settingsViewController() {
@@ -250,9 +248,8 @@ final class WeatherViewController: UIViewController {
     @objc private func currentLocationButtonAction() {
         searchBar.text = nil
         hideKeyboard()
-        viewModel.isSearchByCity = true
-        viewModel.fetchWeatherOneDay(city: viewModel.city)
-        print("currentLocationButtonAction")
+        viewModel.isSearchByCity = false
+        viewModel.fetchCurrentLocation()
     }
     
     @objc private func hideKeyboard() {
