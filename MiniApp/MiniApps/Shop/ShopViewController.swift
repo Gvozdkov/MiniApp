@@ -10,13 +10,10 @@ import UIKit
 final class ShopViewController: UIViewController {
     weak var coordinator: CoordinatorVC?
     private let viewModel = ShopViewModelL()
+    private let universalUIElements = UniversalUIElements()
     
     private lazy var lineView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .lightGray
-        view.layer.cornerRadius = 2
-        return view
+        return universalUIElements.createLineView()
     }()
     
     private lazy var shopCollection: UICollectionView = {

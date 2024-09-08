@@ -198,5 +198,15 @@ class UniversalUIElements {
         
         return view
     }
+    
+   
+    func createLineView() -> UIView  {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .lightGray
+        view.layer.cornerRadius = 2
+       
+        return view
+    }
 }
 
