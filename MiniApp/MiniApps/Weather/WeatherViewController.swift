@@ -176,7 +176,7 @@ final class WeatherViewController: UIViewController {
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor), // важное ограничение для работы scroll
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor), 
             contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor, constant: 140),
             
             containerSearchBar.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
