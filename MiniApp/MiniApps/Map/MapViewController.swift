@@ -10,10 +10,17 @@ import WebKit
 
 final class MapViewController: UIViewController {
     weak var coordinator: CoordinatorVC?
+    private let universalUIElements = UniversalUIElements()
+    
+    private lazy var lineView: UIView = {
+        return universalUIElements.createLineView()
+    }()
     
     private lazy var webView: WKWebView = {
         let web = WKWebView()
         web.translatesAutoresizingMaskIntoConstraints = false
+        web.clipsToBounds = true
+        web.layer.cornerRadius = 14
         return web
     }()
     
@@ -26,10 +33,16 @@ final class MapViewController: UIViewController {
     private func settingsViewController() {
         view.backgroundColor = .white
         
+        view.addSubview(lineView)
         view.addSubview(webView)
         
         NSLayoutConstraint.activate([
-            webView.topAnchor.constraint(equalTo: view.topAnchor),
+            lineView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            lineView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            lineView.heightAnchor.constraint(equalToConstant: 5),
+            lineView.widthAnchor.constraint(equalToConstant: 60),
+            
+            webView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 10),
             webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             webView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             webView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
