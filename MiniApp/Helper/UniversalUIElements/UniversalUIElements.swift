@@ -205,7 +205,7 @@ class UniversalUIElements {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .lightGray
         view.layer.cornerRadius = 2
-       
+        view.accessibilityIdentifier = "lineView"
         return view
     }
 }
